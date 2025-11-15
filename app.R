@@ -23,7 +23,7 @@ mix_temp <- function(mv, mm, Tv, Tm) {
 ##############################################
 
 ui <- navbarPage(
-  "Kjøkkenfysikk",
+  "Matgeek",
 
   ##################################################
   # FANE 1: Oppvarming
