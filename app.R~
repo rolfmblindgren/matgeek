@@ -1,0 +1,106 @@
+library(shiny)
+
+ui <- navbarPage(
+  title = "Kjøkkenfysikk",
+
+  ############################################################
+  # 1. FANEN: OPPVARMING AV VANN
+  ############################################################
+  tabPanel("Oppvarming av vann",
+
+    sidebarLayout(
+      sidebarPanel(
+        numericInput("watt", "Effekt på vannkoker (W):", value = 2000, min = 200),
+        numericInput("mengde", "Mengde vann (dl):", value = 7.5, min = 0.1),
+        numericInput("starttemp", "Starttemperatur (°C):", value = 10),
+        numericInput("sluttemp", "Måltemperatur (°C):", value = 75),
+        sliderInput("eff", "Effektivitet (%):", min = 50, max = 100, value = 90),
+        actionButton("calc_heat", "Beregn")
+      ),
+
+      mainPanel(
+        h3("Tid til ønsket temperatur:"),
+        verbatimTextOutput("tid_heat")
+      )
+    )
+  ),
+
+  ############################################################
+  # 2. FANEN: BLANDING VANN + MELK
+  ############################################################
+  tabPanel("Blanding av vann og melk",
+
+    sidebarLayout(
+      sidebarPanel(
+        numericInput("mengde_vann", "Mengde vann (dl):", value = 7.5, min = 0.1),
+        numericInput("mengde_melk", "Mengde melk (dl):", value = 2, min = 0.1),
+        numericInput("temp_melk", "Temperatur på melk (°C):", value = 4),
+        numericInput("temp_slutt", "Ønsket slutt-temperatur (°C):", value = 37),
+        actionButton("calc_mix", "Beregn")
+      ),
+
+      mainPanel(
+        h3("Nødvendig temperatur på vannet:"),
+        verbatimTextOutput("temp_vann"),
+        br(),
+        h4("Formel:"),
+        p("T_vann = (T_slutt*(m_v + m_m) - m_m*T_melk) / m_v")
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+
+  ############################################################
+  # LOGIKK FOR FANEN «OPPVARMING AV VANN»
+  ############################################################
+  observeEvent(input$calc_heat, {
+
+    c_water <- 4180  # J/kg°C
+    watt <- input$watt
+    mass <- input$mengde / 10
+    dT   <- input$sluttemp - input$starttemp
+    eff  <- input$eff / 100
+
+    if (dT <= 0) {
+      output$tid_heat <- renderText("Sluttemperaturen må være høyere enn starttemperaturen.")
+      return()
+    }
+
+    E <- mass * c_water * dT
+    P <- watt * eff
+    t <- E / P
+
+    minutter <- floor(t / 60)
+    sekunder <- round(t %% 60)
+
+    output$tid_heat <- renderText(
+      sprintf("≈ %d min %02d sek", minutter, sekunder)
+    )
+  })
+
+  ############################################################
+  # LOGIKK FOR FANEN «BLANDING VANN + MELK»
+  ############################################################
+  observeEvent(input$calc_mix, {
+
+    mv <- input$mengde_vann
+    mm <- input$mengde_melk
+    Tm <- input$temp_melk
+    Ts <- input$temp_slutt
+
+    if (mv <= 0) {
+      output$temp_vann <- renderText("Mengden vann må være større enn 0.")
+      return()
+    }
+
+    Tv <- (Ts * (mv + mm) - mm * Tm) / mv
+
+    output$temp_vann <- renderText(
+      sprintf("Vannet må holde ca. %.1f °C.", Tv)
+    )
+  })
+}
+
+shinyApp(ui, server)
