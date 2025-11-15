@@ -86,7 +86,7 @@ ui <- navbarPage(
         actionButton("plot_heat", "Tegn kurve"),
         hr(),
         h4("Energi og kostnad"),
-        numericInput("kost_kwh", "Strømpris (kr/kWh):", 1.50)
+        numericInput("kost_kwh", "Strømpris (kr/kWh):", 0.40)
       ),
       mainPanel(
         h3("Temperatur som funksjon av tid:"),
