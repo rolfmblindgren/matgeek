@@ -100,7 +100,7 @@ med måleusikkerhet og termostatforsinkelse.
 Energibruk beregnes som:
 
 $$
-E_\text{kWh} = \frac{m \cdot c \cdot \Delta T}{3.6 \cdot 10^6}
+E_\text{kWh} = \frac{m \cdot  c \cdot \Delta T}{3.6 \cdot 10{^{6}}}
 $$
 
 Kostnad:
