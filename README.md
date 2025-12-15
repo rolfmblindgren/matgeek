@@ -1,5 +1,7 @@
 # Matgeek – kjøkkenfysikk i praksis
 
+[![deploy](https://github.com/rolfmblindgren/matgeek/actions/workflows/deploy.yml/badge.svg)](https://github.com/rolfmblindgren/matgeek/actions/workflows/deploy.yml)
+
 Matgeek er en liten Shiny-app som gjør enkle, men nyttige
 fysikkberegninger for kjøkkenbruk:
 
