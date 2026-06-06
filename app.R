@@ -1,5 +1,7 @@
 library(shiny)
-library(shiny.tailwind)
+library(yaml)
+
+app_meta <- yaml::read_yaml("meta.yaml")
 
 ##############################################
 ## KONSTANTER OG HJELPEFUNKSJONER
@@ -24,108 +26,114 @@ mix_temp <- function(mv, mm, Tv, Tm) {
 ##############################################
 
 ui <- fluidPage(
-    use_tailwind(),
-    navbarPage(
+  grendelshiny::grendelshiny_css(),
+  grendelshiny::grendelshiny_js(),
+  shinyseo::social_meta(app_meta),
+
+  navbarPage(
     "Matgeek",
 
 ##################################################
     ## FANE 1: Oppvarming
 ##################################################
     tabPanel("Oppvarming av vann",
-             sidebarLayout(
-                 sidebarPanel(
-                     twNumericInput("watt", "Effekt (W):", 2000, min = 200),
-                     twNumericInput("mengde", "Mengde vann (dl):", 7.5, min = 0.1),
-                     twNumericInput("starttemp", "Starttemperatur (°C):", 10),
-                     twNumericInput("sluttemp", "Måltemperatur (°C):", 75),
-                     twSliderInput("eff", "Effektivitet (%):", 50, 100, 90),
-                     actionButton("calc_heat", "Beregn")
-                 ),
-                 mainPanel(
-                     h3("Tid:"),
-                     verbatimTextOutput("tid_heat")
-                 )
-             )
-             ),
+      sidebarLayout(
+        sidebarPanel(class = "sidebar-card",
+          numericInput("watt", "Effekt (W):", 2000, min = 200),
+          numericInput("mengde", "Mengde vann (dl):", 7.5, min = 0.1),
+          numericInput("starttemp", "Starttemperatur (°C):", 10),
+          numericInput("sluttemp", "Måltemperatur (°C):", 75),
+          sliderInput("eff", "Effektivitet (%):", 50, 100, 90),
+          actionButton("calc_heat", "Beregn", class = "btn-primary")
+        ),
+        mainPanel(class = "main-card",
+          h3("Tid:"),
+          verbatimTextOutput("tid_heat")
+        )
+      )
+    ),
 
 ##################################################
     ## FANE 2: Blanding
 ##################################################
     tabPanel("Blanding vann og melk",
-             sidebarLayout(
-                 sidebarPanel(
-                     twNumericInput("mv", "Mengde vann (dl):", 7.5),
-                     twNumericInput("mm", "Mengde melk (dl):", 2.0),
-                     twNumericInput("Tm", "Temperatur på melk (°C):", 4),
-                     twNumericInput("Ts", "Ønsket slutt-temperatur (°C):", 37),
-                     actionButton("calc_mix", "Beregn nødvendig vanntemperatur"),
-                     hr(),
-                     h4("Hva blir temperaturen hvis jeg bare blander?"),
-                     twNumericInput("Tv2", "Vanntemperatur (°C):", 60),
-                     actionButton("calc_mix2", "Beregn blandet temperatur")
-                 ),
-                 mainPanel(
-                     h3("Nødvendig temperatur på vannet:"),
-                     verbatimTextOutput("Tv_needed"),
-                     hr(),
-                     h3("Temperaturen på blandingen:"),
-                     verbatimTextOutput("T_mix_raw")
-                 )
-             )
-             ),
+      sidebarLayout(
+        sidebarPanel(class = "sidebar-card",
+          numericInput("mv", "Mengde vann (dl):", 7.5),
+          numericInput("mm", "Mengde melk (dl):", 2.0),
+          numericInput("Tm", "Temperatur på melk (°C):", 4),
+          numericInput("Ts", "Ønsket slutt-temperatur (°C):", 37),
+          actionButton("calc_mix", "Beregn nødvendig vanntemperatur",
+                       class = "btn-primary"),
+          hr(),
+          h4("Hva blir temperaturen hvis jeg bare blander?"),
+          numericInput("Tv2", "Vanntemperatur (°C):", 60),
+          actionButton("calc_mix2", "Beregn blandet temperatur",
+                       class = "btn-primary")
+        ),
+        mainPanel(class = "main-card",
+          h3("Nødvendig temperatur på vannet:"),
+          verbatimTextOutput("Tv_needed"),
+          hr(),
+          h3("Temperaturen på blandingen:"),
+          verbatimTextOutput("T_mix_raw")
+        )
+      )
+    ),
 
 ##################################################
     ## FANE 3: Kurver og energi
 ##################################################
     tabPanel("Kurver og energi",
-             sidebarLayout(
-                 sidebarPanel(
-                     h4("Oppvarmingskurve"),
-                     twNumericInput("watt3", "Effekt (W):", 2000),
-                     twNumericInput("mengde3", "Mengde vann (dl):", 7.5),
-                     twNumericInput("start3", "Starttemperatur (°C):", 10),
-                     twNumericInput("slutt3", "Sluttemperatur (°C):", 75),
-                     twSliderInput("eff3", "Effektivitet (%):", 50, 100, 90),
-                     actionButton("plot_heat", "Tegn kurve"),
-                     hr(),
-                     h4("Energi og kostnad"),
-                     twNumericInput("kost_kwh", "Strømpris (kr/kWh):", 0.40)
-                 ),
-                 mainPanel(
-                     h3("Temperatur som funksjon av tid:"),
-                     plotOutput("heat_curve"),
-                     hr(),
-                     h3("Anslag for energibruk:"),
-                     verbatimTextOutput("energi_kostnad")
-                 )
-             )
-             ),
+      sidebarLayout(
+        sidebarPanel(class = "sidebar-card",
+          h4("Oppvarmingskurve"),
+          numericInput("watt3", "Effekt (W):", 2000),
+          numericInput("mengde3", "Mengde vann (dl):", 7.5),
+          numericInput("start3", "Starttemperatur (°C):", 10),
+          numericInput("slutt3", "Sluttemperatur (°C):", 75),
+          sliderInput("eff3", "Effektivitet (%):", 50, 100, 90),
+          actionButton("plot_heat", "Tegn kurve", class = "btn-primary"),
+          hr(),
+          h4("Energi og kostnad"),
+          numericInput("kost_kwh", "Strømpris (kr/kWh):", 0.40)
+        ),
+        mainPanel(class = "main-card",
+          h3("Temperatur som funksjon av tid:"),
+          plotOutput("heat_curve"),
+          hr(),
+          h3("Anslag for energibruk:"),
+          verbatimTextOutput("energi_kostnad")
+        )
+      )
+    ),
 
 ##################################################
     ## FANE 4: Springtemperatur
 ##################################################
     tabPanel("Springtemperatur",
-             sidebarLayout(
-                 sidebarPanel(
-                     h4("Typiske temperaturer i springvann"),
-                     helpText("Dette er omtrentlige tall basert på norske forhold."),
-                     hr(),
-                     actionButton("calc_spring", "Vis anbefalinger")
-                 ),
-                 mainPanel(
-                     h3("Vanlige intervaller i Norge:"),
-                     verbatimTextOutput("spring_ranges"),
-                     hr(),
-                     h3("Hva bør man anta i beregninger?"),
-                     verbatimTextOutput("spring_suggestion"),
-                     br(),
-                     p("Vintervann kan være overraskende kaldt. På en del steder i landet er
-           3–7 °C vanlig når det er kaldest ute.
-           Sommeren gir ofte 10–15 °C, litt høyere der stigerørene ligger varmt.")
-           )
-           )
-           )
-))
+      sidebarLayout(
+        sidebarPanel(class = "sidebar-card",
+          h4("Typiske temperaturer i springvann"),
+          helpText("Dette er omtrentlige tall basert på norske forhold."),
+          hr(),
+          actionButton("calc_spring", "Vis anbefalinger", class = "btn-primary")
+        ),
+        mainPanel(class = "main-card",
+          h3("Vanlige intervaller i Norge:"),
+          verbatimTextOutput("spring_ranges"),
+          hr(),
+          h3("Hva bør man anta i beregninger?"),
+          verbatimTextOutput("spring_suggestion"),
+          br(),
+          p("Vintervann kan være overraskende kaldt. På en del steder i landet er
+            3–7 °C vanlig når det er kaldest ute.
+            Sommeren gir ofte 10–15 °C, litt høyere der stigerørene ligger varmt.")
+        )
+      )
+    )
+  )
+)
 
 ##############################################
 ## SERVER
@@ -145,7 +153,7 @@ server <- function(input, output) {
     sekunder <- round(t %% 60)
 
     output$tid_heat <- renderText(
-        sprintf("≈ %d min %02d sek", minutter, sekunder)
+      sprintf("≈ %d min %02d sek", minutter, sekunder)
     )
   })
 
@@ -195,7 +203,7 @@ server <- function(input, output) {
     kost  <- E_kWh * input$kost_kwh
 
     output$energi_kostnad <- renderText(
-        sprintf("Energibruk: %.3f kWh\nKostnad: %.2f kr", E_kWh, kost)
+      sprintf("Energibruk: %.3f kWh\nKostnad: %.2f kr", E_kWh, kost)
     )
   })
 
@@ -204,21 +212,21 @@ server <- function(input, output) {
 ############################
   observeEvent(input$calc_spring, {
     output$spring_ranges <- renderText(
-        paste(
-            "• Vinter: 3–10 °C",
-            "• Vår/høst: 7–12 °C",
-            "• Sommer: 10–15 °C (kan være høyere i blokk)",
-            sep = "\n"
-        )
+      paste(
+        "• Vinter: 3–10 °C",
+        "• Vår/høst: 7–12 °C",
+        "• Sommer: 10–15 °C (kan være høyere i blokk)",
+        sep = "\n"
+      )
     )
 
     output$spring_suggestion <- renderText(
-        "For beregninger anbefales:
+      "For beregninger anbefales:
 – 8 °C om vinteren
 – 12 °C ellers i året
 
 Begge er gode overslag."
-)
+    )
   })
 }
 
