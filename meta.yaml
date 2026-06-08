@@ -10,6 +10,7 @@ locale: "nb_NO"
 
 favicon: "/matgeek/favicon.svg"
 favicon_type: "image/svg+xml"
+favicon_png: "/matgeek/favicon-32.png"
 theme_color: "#0f5c51"
 
 schema_type: "WebApplication"
