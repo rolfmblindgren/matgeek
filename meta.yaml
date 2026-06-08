@@ -3,8 +3,9 @@ description: >
   Praktiske beregninger for matentusiaster: oppvarmingstid, blandingstemperatur,
   energibruk og springvannstemperatur. Basert på fysikk, ikke gjetting.
 url: "https://shiny.grendel.no/matgeek"
-image: "https://shiny.grendel.no/matgeek/preview.png"
+image: "https://shiny.grendel.no/matgeek/preview.svg"
 image_alt: "Matgeek – beregningsverktøy for matentusiaster"
+image_type: "image/svg+xml"
 site_name: "Matgeek"
 locale: "nb_NO"
 
