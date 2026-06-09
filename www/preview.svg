@@ -1,63 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Matgeek</title>
-  <desc id="desc">Kjøkkenfysikk i praksis</desc>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630' role='img' aria-labelledby='title desc'>
+  <title id='title'>Matgeek</title>
+  <desc id='desc'>Kjokkenfysikk med mer trøkk</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f5c51"/>
-      <stop offset="100%" stop-color="#5a3a12"/>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#0b2b3f'/>
+      <stop offset='55%' stop-color='#0f7a6e'/>
+      <stop offset='100%' stop-color='#f08a24'/>
     </linearGradient>
-    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    <linearGradient id='glass' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#ffffff' stop-opacity='.22'/>
+      <stop offset='100%' stop-color='#ffffff' stop-opacity='.06'/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f4d06f"/>
-      <stop offset="100%" stop-color="#6de9dc"/>
+    <linearGradient id='accent' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#ffe66d'/>
+      <stop offset='100%' stop-color='#63f2df'/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1040" cy="100" r="220" fill="#f4d06f" opacity="0.14"/>
-  <circle cx="980" cy="548" r="300" fill="#6de9dc" opacity="0.11"/>
-  <path d="M0 470 C190 395, 340 560, 540 492 S920 390, 1200 500 L1200 630 L0 630 Z" fill="rgba(255,255,255,0.05)"/>
-  <g transform="translate(68,70)">
-    <rect width="500" height="490" rx="36" fill="url(#panel)" stroke="rgba(255,255,255,0.16)"/>
-    <rect x="30" y="28" width="200" height="34" rx="17" fill="rgba(255,255,255,0.11)" stroke="rgba(255,255,255,0.16)"/>
-    <text x="130" y="51" text-anchor="middle" fill="#f5fffe" font-size="14" font-weight="800" letter-spacing="1.3">PRAKTISK FYSIKK</text>
-    <text x="30" y="126" fill="#f7fffd" font-size="66" font-weight="900" letter-spacing="-1.8">Matgeek</text>
-    <text x="30" y="186" fill="#ecfffb" font-size="27" font-weight="700">Vann, melk, varme og energi</text>
-    <text x="30" y="226" fill="rgba(247,255,253,0.82)" font-size="18" font-weight="500">Korte og brukbare beregninger for kjøkkenet, ikke laboratoriet.</text>
-    <g transform="translate(30,314)">
-      <g transform="translate(0,0)"><rect x="0" y="0" rx="16" width="126" height="34" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="63" y="22" text-anchor="middle" fill="#f7fffd" font-size="14" font-weight="700">Varme</text></g>
-      <g transform="translate(138,0)"><rect x="0" y="0" rx="16" width="126" height="34" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="63" y="22" text-anchor="middle" fill="#f7fffd" font-size="14" font-weight="700">Blanding</text></g>
-      <g transform="translate(276,0)"><rect x="0" y="0" rx="16" width="126" height="34" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="63" y="22" text-anchor="middle" fill="#f7fffd" font-size="14" font-weight="700">Energi</text></g>
+  <rect width='1200' height='630' fill='url(#bg)'/>
+  <circle cx='1020' cy='120' r='210' fill='#ffe66d' opacity='.12'/>
+  <circle cx='980' cy='540' r='280' fill='#63f2df' opacity='.10'/>
+  <path d='M0 480 C200 410, 320 560, 520 500 S900 400, 1200 520 L1200 630 L0 630 Z' fill='rgba(255,255,255,.06)'/>
+
+  <g transform='translate(70 72)'>
+    <rect width='480' height='486' rx='38' fill='url(#glass)' stroke='rgba(255,255,255,.18)'/>
+    <text x='32' y='56' fill='#fff' font-size='14' font-weight='800' letter-spacing='1.4'>PRAKTISK FYSIKK</text>
+    <text x='32' y='132' fill='#fff' font-size='74' font-weight='900' letter-spacing='-2'>Matgeek</text>
+    <text x='32' y='190' fill='#effffb' font-size='26' font-weight='700'>Vann, varme og kjøkkenlogikk</text>
+    <text x='32' y='228' fill='rgba(255,255,255,.82)' font-size='18'>Regn ut det som faktisk skjer i gryta.</text>
+
+    <g transform='translate(34 292)'>
+      <rect width='120' height='34' rx='17' fill='rgba(255,255,255,.10)'/>
+      <text x='60' y='23' text-anchor='middle' fill='#fff' font-size='14' font-weight='700'>Varme</text>
+      <g transform='translate(134 0)'><rect width='120' height='34' rx='17' fill='rgba(255,255,255,.10)'/><text x='60' y='23' text-anchor='middle' fill='#fff' font-size='14' font-weight='700'>Blanding</text></g>
+      <g transform='translate(268 0)'><rect width='120' height='34' rx='17' fill='rgba(255,255,255,.10)'/><text x='60' y='23' text-anchor='middle' fill='#fff' font-size='14' font-weight='700'>Energi</text></g>
     </g>
   </g>
-  <g transform="translate(636,82)">
-    <rect width="498" height="466" rx="40" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)"/>
-    <rect x="26" y="24" width="128" height="30" rx="15" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.16)"/>
-    <text x="90" y="44" text-anchor="middle" fill="#f7fffd" font-size="13" font-weight="800">Shiny app</text>
-    <g transform="translate(40,72)">
-      <rect x="0" y="0" width="418" height="324" rx="28" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)"/>
-      <g transform="translate(22,26)">
-        <rect x="0" y="34" width="180" height="172" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
-        <path d="M30 62 H122" stroke="#f7fffd" stroke-width="8" stroke-linecap="round"/>
-        <path d="M44 92 H134" stroke="#f7fffd" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
-        <path d="M58 122 H144" stroke="#f7fffd" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
-        <path d="M72 152 H154" stroke="#f7fffd" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
-        <rect x="28" y="26" width="124" height="20" rx="10" fill="rgba(109,233,220,0.16)"/>
-        <text x="90" y="40" text-anchor="middle" fill="#f7fffd" font-size="14" font-weight="800">Kjele</text>
+
+  <g transform='translate(648 82)'>
+    <rect width='490' height='466' rx='40' fill='rgba(255,255,255,.08)' stroke='rgba(255,255,255,.16)'/>
+    <rect x='28' y='24' width='128' height='30' rx='15' fill='rgba(255,255,255,.10)'/>
+    <text x='92' y='45' text-anchor='middle' fill='#fff' font-size='13' font-weight='800'>Shiny app</text>
+
+    <g transform='translate(34 66)'>
+      <rect width='422' height='330' rx='28' fill='rgba(8,18,28,.42)' stroke='rgba(255,255,255,.14)'/>
+
+      <g transform='translate(24 24)'>
+        <rect width='176' height='178' rx='26' fill='rgba(255,255,255,.09)' stroke='rgba(255,255,255,.16)'/>
+        <rect x='26' y='30' width='124' height='22' rx='11' fill='url(#accent)' opacity='.95'/>
+        <text x='88' y='46' text-anchor='middle' fill='#08202d' font-size='14' font-weight='900'>KJELE</text>
+        <rect x='50' y='54' width='76' height='76' rx='20' fill='none' stroke='#fff' stroke-width='10'/>
+        <path d='M68 34 C62 24, 64 14, 70 6' stroke='#ffe66d' stroke-width='7' stroke-linecap='round' fill='none'/>
+        <path d='M88 30 C82 18, 82 8, 88 0' stroke='#63f2df' stroke-width='7' stroke-linecap='round' fill='none'/>
+        <path d='M108 34 C102 22, 104 10, 112 2' stroke='#ffe66d' stroke-width='7' stroke-linecap='round' fill='none'/>
+        <circle cx='88' cy='92' r='20' fill='#f08a24'/>
+        <circle cx='88' cy='92' r='8' fill='#fff'/>
       </g>
-      <g transform="translate(242,30)">
-        <rect x="0" y="0" width="132" height="194" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
-        <rect x="54" y="24" width="24" height="100" rx="12" fill="#f4d06f"/>
-        <circle cx="66" cy="136" r="28" fill="#6de9dc"/>
-        <path d="M44 72 C30 58, 26 48, 22 36" stroke="#f7fffd" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M88 72 C102 58, 106 48, 110 36" stroke="#f7fffd" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <text x="66" y="178" text-anchor="middle" fill="#f7fffd" font-size="16" font-weight="800">°C</text>
+
+      <g transform='translate(236 28)'>
+        <rect width='146' height='170' rx='24' fill='rgba(255,255,255,.09)' stroke='rgba(255,255,255,.16)'/>
+        <text x='73' y='34' text-anchor='middle' fill='#fff' font-size='16' font-weight='800'>Temp</text>
+        <path d='M72 48 V114' stroke='#ffe66d' stroke-width='18' stroke-linecap='round'/>
+        <circle cx='72' cy='114' r='36' fill='#63f2df'/>
+        <text x='72' y='121' text-anchor='middle' fill='#08202d' font-size='22' font-weight='900'>°C</text>
+        <path d='M42 144 H102' stroke='#fff' stroke-width='8' stroke-linecap='round'/>
       </g>
-      <rect x="246" y="238" width="124" height="54" rx="18" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
-      <text x="308" y="270" text-anchor="middle" fill="#f7fffd" font-size="18" font-weight="800">Nøyaktig nok</text>
+
+      <rect x='24' y='224' width='370' height='64' rx='18' fill='rgba(255,255,255,.08)' stroke='rgba(255,255,255,.14)'/>
+      <text x='44' y='263' fill='#fff' font-size='20' font-weight='800'>Nøyaktig nok til hverdagsbruk</text>
+      <text x='44' y='284' fill='rgba(255,255,255,.76)' font-size='14'>ikke laboratoriefantasi</text>
     </g>
   </g>
 </svg>
